@@ -167,3 +167,67 @@ CREATE TABLE bd_multa (
     FOREIGN KEY (usuario_id) REFERENCES bd_usuario(usuario_id)
 );
 
+
+
+##Inserir Dados:
+
+INSERT INTO bd_autor (nome, data_nascimento, nacionalidade) VALUES
+('Machado de Assis', '1839-06-21', 'Brasileiro'),
+('Clarice Lispector', '1920-12-10', 'Brasileira'),
+('George Orwell', '1903-06-25', 'Britânico'),
+('J.K. Rowling', '1965-07-31', 'Britânica'),
+('J.R.R. Tolkien', '1892-01-03', 'Britânico');
+
+INSERT INTO bd_editora (nome, endereço) VALUES
+('Companhia das Letras', 'São Paulo'),
+('Rocco', 'Rio de Janeiro'),
+('Penguin Books', 'Londres'),
+('HarperCollins', 'Nova York'),
+('Intrínseca', 'Rio de Janeiro');
+
+
+INSERT INTO bd_categoria (nome, descricao) VALUES
+('Romance', 'Histórias românticas'),
+('Ficção Científica', 'Narrativas futuristas'),
+('Fantasia', 'Mundos imaginários'),
+('Clássico', 'Obras clássicas'),
+('Drama', 'Narrativas dramáticas');
+
+
+INSERT INTO bd_usuario (nome, email, data_registro) VALUES
+('Ana Souza', 'ana@email.com', '2024-01-10'),
+('Carlos Lima', 'carlos@email.com', '2024-02-15'),
+('Mariana Alves', 'mariana@email.com', '2024-03-20'),
+('João Pedro', 'joao@email.com', '2024-04-05'),
+('Fernanda Costa', 'fernanda@email.com', '2024-05-12');
+
+INSERT INTO bd_livro (titulo, ano_publicacao, genero, autor_id, editora_id, categoria_id) VALUES
+('Dom Casmurro', 1899, 'Romance', 1, 1, 4),
+('A Hora da Estrela', 1977, 'Drama', 2, 1, 5),
+('1984', 1949, 'Ficção Científica', 3, 3, 2),
+('Harry Potter', 1997, 'Fantasia', 4, 2, 3),
+('O Senhor dos Anéis', 1954, 'Fantasia', 5, 4, 3);
+
+
+INSERT INTO bd_emprestimo (livro_id, usuario_id, data_emprestimo, data_devolucao) VALUES
+(1, 1, '2025-01-10', '2025-01-20'),
+(2, 2, '2025-02-01', NULL),
+(3, 3, '2025-02-15', '2025-02-25'),
+(4, 1, '2025-03-01', NULL),
+(5, 4, '2025-03-10', '2025-03-20');
+
+
+INSERT INTO bd_reserva (livro_id, usuario_id, data_reserva, status) VALUES
+(1, 2, '2025-03-01', 'ativa'),
+(2, 3, '2025-03-02', 'concluida'),
+(3, 1, '2025-03-03', 'cancelada'),
+(4, 5, '2025-03-04', 'ativa'),
+(5, 2, '2025-03-05', 'ativa');
+
+
+INSERT INTO bd_multa(usuario_id, valor, data_aplicacao, data_pagamento) VALUES
+(1, 10.50, '2025-02-01', '2025-02-05'),
+(2, 5.00, '2025-02-10', NULL),
+(3, 7.25, '2025-02-15', '2025-02-20'),
+(4, 12.00, '2025-03-01', NULL),
+(5, 3.50, '2025-03-05', '2025-03-06');
