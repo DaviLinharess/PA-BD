@@ -25,7 +25,14 @@ SECRET_KEY = "django-insecure-ij)fla9%*e+swys0ho$_&!#7*3=*)zo99=)g-olsfcs50#&r*f
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://*.github.dev",
+    "https://refactored-waffle-wrg4g79v7x6wc99qp-8000.app.github.dev",
+    "https://localhost:8000",
+    "http://localhost:8000",
+]
 
 
 # Application definition
@@ -83,8 +90,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'amazon_db',                # Nome do banco de dados
-        'USER': 'seu_usuario',              # Usuário do Post
-        'PASSWORD': 'sua_senha',            # Senha do usuário
+        'USER': 'davi',              # Usuário do Post
+        'PASSWORD': '1234',            # Senha do usuário
         'HOST': 'localhost',                # Endereço do servidor
         'PORT': '5432',                     # Porta padrão do PostgreSQL
     }
