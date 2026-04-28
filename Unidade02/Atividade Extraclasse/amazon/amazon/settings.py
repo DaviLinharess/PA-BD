@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     #Aplicativos de Terceiros
     "rest_framework",
     "django_filters",
+    "drf_yasg",
 
     #Aplicativos do Projeto
     "backend",

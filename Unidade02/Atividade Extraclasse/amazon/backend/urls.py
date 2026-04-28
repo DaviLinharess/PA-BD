@@ -5,6 +5,8 @@ from backend import views
 
 router = DefaultRouter()
 router.register(r'clientes', views.ClienteViewSet, basename='cliente')
+router.register(r'vendedores', views.VendedorViewSet, basename='vendedor') 
+router.register(r'produtos', views.ProdutoViewSet, basename='produto') 
 
 urlpatterns = [
     path('', include(router.urls)),
