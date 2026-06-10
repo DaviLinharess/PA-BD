@@ -1,3 +1,5 @@
+### TESTES DO CENÁRIO C
+
 ### Cadastrar atleta
 POST http://localhost:8000/api/signup/
 Content-Type: application/json
@@ -84,4 +86,98 @@ Content-Type: application/json
 
 {
     "nome": "Circuito das Dunas 2025"
+}
+
+
+
+### TESTES DO CENÁRIO D
+
+### Cadastrar atleta com perfil
+POST http://localhost:8000/api/signup/
+Content-Type: application/json
+
+{
+    "username": "lucas_trail",
+    "email": "lucas@runtrack.com",
+    "password": "Trail@999",
+    "tipo": "ATLETA",
+    "cidade": "Parnamirim",
+    "perfil_atleta": {
+        "cpf": "12345678901",
+        "categoria": "21K"
+    }
+}
+
+### Cadastrar Treinador
+POST http://localhost:8000/api/signup/
+Content-Type: application/json
+
+{
+    "username": "coach_roberto",
+    "email": "roberto@runtrack.com",
+    "password": "Coach@321",
+    "tipo": "TREINADOR",
+    "perfil_treinador": {
+        "cref": "012345-G/RN",
+        "especialidade": "Corrida de Rua e Trilha",
+        "qtd_atletas_max": 15
+    }
+}
+
+### Cadastrar Organizador
+POST http://localhost:8000/api/signup/
+Content-Type: application/json
+
+{
+    "username": "circuito_rn",
+    "email": "rn@circuito.com",
+    "password": "Circuito@007",
+    "tipo": "ORGANIZADOR",
+    "perfil_organizador": {
+        "cnpj": "99887766000100",
+        "nome_organizacao": "Circuito RN de Corridas",
+        "uf": "RN"
+    }
+}
+
+### Teste de falha
+POST http://localhost:8000/api/signup/
+Content-Type: application/json
+
+{
+    "username": "sem_perfil",
+    "password": "Teste@000",
+    "tipo": "ATLETA"
+}
+
+### Teste de Login de Atleta
+POST http://localhost:8000/api/login/
+Content-Type: application/json
+
+{
+    "username": "lucas_trail",
+    "password": "Trail@999"
+}
+
+### Teste de Perfil Completo
+GET http://localhost:8000/api/perfil/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgxMTE5MDA5LCJpYXQiOjE3ODExMTcyMDksImp0aSI6ImFhMTRkOTI3OWZmMzQ0NWY4YmIwZjZlNmM3OGZhZTQ5IiwidXNlcl9pZCI6IjQiLCJ0aXBvIjoiQVRMRVRBIiwidXNlcm5hbWUiOiJsdWNhc190cmFpbCJ9.u9wZwO9_dHEEvyfFuYEMfCL1xRKBebbTbX_rYd8mB1I
+
+### Teste de Permissão
+POST http://localhost:8000/api/login/
+Content-Type: application/json
+
+{
+    "username": "coach_roberto",
+    "password": "Coach@321"
+}
+
+###
+POST http://localhost:8000/api/treino/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgxMTE5MDY3LCJpYXQiOjE3ODExMTcyNjcsImp0aSI6ImNlNjE4ZjkyYzYyYjQ3YTU4ZjliZDQ4OWYwZTE5NGZhIiwidXNlcl9pZCI6IjUiLCJ0aXBvIjoiVFJFSU5BRE9SIiwidXNlcm5hbWUiOiJjb2FjaF9yb2JlcnRvIn0.gWniWMcqIetJeQapNLtuD09TDfMoWV-8jzSYhPwiePg
+Content-Type: application/json
+
+{
+    "distancia_km": 5,
+    "tempo_min": 28
 }

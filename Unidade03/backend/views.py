@@ -47,13 +47,47 @@ class PerfilView(APIView):
 
     def get(self, request):
 
-        return Response({
-            "id": request.user.id,
-            "username": request.user.username,
-            "email": request.user.email,
-            "tipo": request.user.tipo,
-            "cidade": request.user.cidade
-        })
+        usuario = request.user
+
+        dados = {
+            "id": usuario.id,
+            "username": usuario.username,
+            "email": usuario.email,
+            "tipo": usuario.tipo,
+            "cidade": usuario.cidade
+        }
+
+        if (
+            usuario.is_atleta()
+            and hasattr(usuario, 'perfil_atleta')
+        ):
+            dados["perfil_atleta"] = {
+                "cpf": usuario.perfil_atleta.cpf,
+                "categoria": usuario.perfil_atleta.categoria,
+                "melhor_tempo": usuario.perfil_atleta.melhor_tempo
+            }
+
+        elif (
+            usuario.is_treinador()
+            and hasattr(usuario, 'perfil_treinador')
+        ):
+            dados["perfil_treinador"] = {
+                "cref": usuario.perfil_treinador.cref,
+                "especialidade": usuario.perfil_treinador.especialidade,
+                "qtd_atletas_max": usuario.perfil_treinador.qtd_atletas_max
+            }
+
+        elif (
+            usuario.is_organizador()
+            and hasattr(usuario, 'perfil_organizador')
+        ):
+            dados["perfil_organizador"] = {
+                "cnpj": usuario.perfil_organizador.cnpj,
+                "nome_organizacao": usuario.perfil_organizador.nome_organizacao,
+                "uf": usuario.perfil_organizador.uf
+            }
+
+        return Response(dados)
 
 class TreinoView(APIView):
 
