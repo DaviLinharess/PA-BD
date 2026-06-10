@@ -1,0 +1,87 @@
+### Cadastrar atleta
+POST http://localhost:8000/api/signup/
+Content-Type: application/json
+
+{
+    "username": "pedro_corredor",
+    "email": "pedro@runtrack.com",
+    "password": "Trilha@123",
+    "tipo": "ATLETA",
+    "cidade": "Natal"
+}
+
+
+### Cadastrar Treinador
+POST http://localhost:8000/api/signup/
+Content-Type: application/json
+
+{
+    "username": "coach_ana",
+    "email": "ana@runtrack.com",
+    "password": "Coach@456",
+    "tipo": "TREINADOR",
+    "cidade": "Mossoró"
+}
+
+### Cadastrar Organizador
+POST http://localhost:8000/api/signup/
+Content-Type: application/json
+
+{
+    "username": "org_circuito",
+    "email": "circuito@runtrack.com",
+    "password": "Org@789",
+    "tipo": "ORGANIZADOR"
+}
+
+### Login do Atleta
+POST http://localhost:8000/api/login/
+Content-Type: application/json
+
+{
+    "username": "pedro_corredor",
+    "password": "Trilha@123"
+}
+
+### Testar /perfil/
+GET http://localhost:8000/api/perfil/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgxMTE3OTQ3LCJpYXQiOjE3ODExMTYxNDcsImp0aSI6IjFmMjgzYjgwZmVlOTQ2NzNiODFkYTc3M2M2ZTY4ZjllIiwidXNlcl9pZCI6IjIiLCJ0aXBvIjoiQVRMRVRBIiwidXNlcm5hbWUiOiJwZWRyb19jb3JyZWRvciJ9.mJsiIzti6i7foPM1Hp25oz1f1WdomnJStzKY-uEOV-c
+
+
+### Testar permissão do Atleta
+POST http://localhost:8000/api/treino/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgxMTE3OTQ3LCJpYXQiOjE3ODExMTYxNDcsImp0aSI6IjFmMjgzYjgwZmVlOTQ2NzNiODFkYTc3M2M2ZTY4ZjllIiwidXNlcl9pZCI6IjIiLCJ0aXBvIjoiQVRMRVRBIiwidXNlcm5hbWUiOiJwZWRyb19jb3JyZWRvciJ9.mJsiIzti6i7foPM1Hp25oz1f1WdomnJStzKY-uEOV-c
+Content-Type: application/json
+
+{
+    "distancia_km": 10,
+    "tempo_min": 58
+}
+
+
+### Testar bloqueio de permissão
+POST http://localhost:8000/api/evento/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgxMTE3OTQ3LCJpYXQiOjE3ODExMTYxNDcsImp0aSI6IjFmMjgzYjgwZmVlOTQ2NzNiODFkYTc3M2M2ZTY4ZjllIiwidXNlcl9pZCI6IjIiLCJ0aXBvIjoiQVRMRVRBIiwidXNlcm5hbWUiOiJwZWRyb19jb3JyZWRvciJ9.mJsiIzti6i7foPM1Hp25oz1f1WdomnJStzKY-uEOV-c
+Content-Type: application/json
+
+{
+    "nome": "Corrida do Atleta"
+}
+
+### Login do Organizador
+POST http://localhost:8000/api/login/
+Content-Type: application/json
+
+{
+    "username": "org_circuito",
+    "password": "Org@789"
+}
+
+### Teste Organizador criando evento
+POST http://localhost:8000/api/evento/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgxMTE4MDkwLCJpYXQiOjE3ODExMTYyOTAsImp0aSI6IjY5MDczMDVmZjhjOTRhODFhOWYzODM4MzA5MDM0ZWJmIiwidXNlcl9pZCI6IjMiLCJ0aXBvIjoiT1JHQU5JWkFET1IiLCJ1c2VybmFtZSI6Im9yZ19jaXJjdWl0byJ9.azqpiOZH_fyVDDxg6rf4xhzgRX6KDbIGgg0m3NUSnbo
+Content-Type: application/json
+
+{
+    "nome": "Circuito das Dunas 2025"
+}
