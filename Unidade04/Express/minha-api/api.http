@@ -1,0 +1,13 @@
+@baseUrl = http://localhost:3000
+
+###POST /produtos - Cria novo produto
+POST {{baseUrl}}/produtos
+Content-Type: application/json
+
+{
+    "nome": "Cabo de Rede",
+    "preco": 30.9
+}
+
+### GET /produtos - Lista os Produtos
+GET {{baseUrl}}/produtos/

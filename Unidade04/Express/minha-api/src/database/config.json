@@ -1,0 +1,9 @@
+{
+    "development": {
+    "username": "postgres",
+    "password": "senha123",
+    "database": "pabd_db",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+    }
+}
